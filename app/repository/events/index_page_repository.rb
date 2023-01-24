@@ -13,7 +13,8 @@ module Events
     end
 
     def paginate(page)
-      event_model.published.page(page)
+      event_model.order(date: :desc).where(publish: true).page(page)
+      # event_model.published.page(page)
     end
   end
 end

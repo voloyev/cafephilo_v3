@@ -2,8 +2,10 @@
 
 class EventsController < ApplicationController
   def index
+
     @events ||= Events::IndexPageRepository.new(Event).paginate(params[:page])
 
+    require 'pry'; binding.pry # FIXME remove debugger
     respond_to do |format|
       format.html
       format.json do

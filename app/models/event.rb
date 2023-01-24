@@ -17,14 +17,12 @@
 class Event < ApplicationRecord
   has_rich_text :description
   has_one_attached :image
-  has_many :event_speakers
+  has_many :event_speakers, dependent: nil
   has_many :speakers, through: :event_speakers
 
   validates :title, presence: true
   validates :date, presence: true
   validates :description, presence: true
-
-  default_scope { order(date: :desc) }
 
   def self.published
     where(publish: true)
