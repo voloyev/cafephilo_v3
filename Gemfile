@@ -3,8 +3,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.1'
+ruby '3.1.6'
 
+gem 'alba'
 gem 'avo'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
@@ -14,10 +15,14 @@ gem 'jbuilder', '~> 2.7'
 gem 'kaminari'
 gem 'mini_magick'
 gem 'pg', '>= 0.18', '< 2.0'
+gem 'posthog-rails'
+gem 'posthog-ruby', require: 'posthog'
 gem 'puma', '~> 4.3'
 gem 'pundit'
 gem 'rails', '~> 6.1.7'
 gem 'rails-i18n', '~> 6.0.0'
+gem 'ransack', '~> 3.1'
+gem 'recaptcha', '~> 5.7'
 gem 'redis-namespace'
 gem 'sass-rails', '~> 5'
 gem 'sentry-raven'
@@ -25,6 +30,7 @@ gem 'sidekiq'
 gem 'sitemap_generator'
 gem 'slim'
 gem 'turbolinks', '~> 5'
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'webpacker', '~> 5.x'
 
 group :development, :test, :staging do
@@ -44,14 +50,11 @@ group :development do
   gem 'guard-rspec', '~> 4.7', '>= 4.7.3'
   gem 'guard-spork', '~> 2.1'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'pry'
-  gem 'pry-doc'
   gem 'rubocop'
   gem 'rubocop-rails'
   gem 'rubocop-rails_config'
   gem 'rubocop-rspec'
   gem 'rubycritic'
-  gem 'solargraph'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
@@ -60,10 +63,3 @@ end
 group :test do
   gem 'simplecov', require: false
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-
-gem 'recaptcha', '~> 5.7'
-
-gem 'ransack', '~> 3.1'

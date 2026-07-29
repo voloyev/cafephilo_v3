@@ -13,9 +13,12 @@ Rails.application.routes.draw do
 
   authenticate :user do
     mount Sidekiq::Web => '/sidekiq'
+    mount Avo::Engine, at: Avo.configuration.root_path
   end
 
-  authenticate :user do
-    mount Avo::Engine, at: Avo.configuration.root_path
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      post '/weblium/webhook', to: 'weblium#webhook'
+    end
   end
 end

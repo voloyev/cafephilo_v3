@@ -2,7 +2,7 @@
 
 class EventsController < ApplicationController
   def index
-    @events ||= Events::IndexPageRepository.new(Event).paginate(params[:page])
+    @events ||= Event.published.page(params[:page])
 
     respond_to do |format|
       format.html

@@ -1,17 +1,29 @@
-version: '3'
 services:
-  db:
-    image: postgres:10
+  postgres:
+    image: postgres:latest
     environment:
-      - POSTGRES_PASSWORD=password
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      PGDATA: /data/postgres
+    volumes:
+      - db_data:/data/postgres
     ports:
       - 5432:5432
-  web:
-    build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
-    volumes:
-      - .:/cafephilo_app
-    ports:
-      - "3000:3000"
-    depends_on:
-      - db
+    networks:
+      - postgres
+    restart: unless-stopped
+  # web:
+  #   build: .
+  #   command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+  #   volumes:
+  #     - .:/cafephilo_app
+  #   ports:
+  #     - "3000:3000"
+  #   depends_on:
+  #     - postgres
+  #
+networks:
+  postgres:
+
+volumes:
+  db_data:

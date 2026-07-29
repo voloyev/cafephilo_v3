@@ -42,7 +42,8 @@ end
       from: 5.years.ago, to: Date.today
     ),
     youtube_link: 'https://www.youtube.com/channel/UC4f4aHcZLG68nnpDcthSKJA',
-    mixcloud_link: 'https://www.mixcloud.com/cafephilolviv'
+    mixcloud_link: 'https://www.mixcloud.com/cafephilolviv',
+    publish: true
   )
 
   event.image.attach(io: File.open("#{Rails.root}/public/seed_images/posters/#{img_index}.jpg"),
@@ -76,7 +77,7 @@ end
                       filename: "#{i}.jpg")
 end
 
-if Rails.env.development?
-  User.create!(email: 'admin@example.com', password: 'password',
-               password_confirmation: 'password')
-end
+# if Rails.env.development?
+#   User.create!(email: 'admin@example.com', password: 'password',
+#                password_confirmation: 'password')
+# end

@@ -27,6 +27,10 @@ class Event < ApplicationRecord
   default_scope { order(date: :desc) }
 
   def self.published
-    where(publish: true)
+    where(publish: true).order(date: :desc)
+  end
+
+  def published?
+    publish
   end
 end

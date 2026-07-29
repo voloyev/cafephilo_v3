@@ -1,4 +1,4 @@
-FROM ruby:2.6.5-slim
+FROM ruby:3.0.1-slim
 
 RUN apt-get update && \
     apt-get install -qq -y build-essential nodejs \

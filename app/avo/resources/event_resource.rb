@@ -16,4 +16,6 @@ class EventResource < Avo::BaseResource
   field :publish, as: :boolean
   field :speakers, as: :has_many, through: :event_speakers, hide_on: [:index]
   field :image, as: :file, is_image: true
+
+  action TogglePublished
 end
